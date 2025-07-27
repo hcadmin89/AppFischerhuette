@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Fischerhütte</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="top-bar">
+    <h1>App Fischerhütte</h1>
+    <div class="header-buttons">
+      <button id="pay-btn">Zahlen</button>
+      <button id="undo-btn">Letzten Vorgang stornieren</button>
+      <button id="stock-btn">Bestand verwalten</button>
+      <button id="add-item-btn">Artikel +</button>
+      <button id="edit-item-btn">Artikel bearbeiten</button>
+      <button id="add-user-btn">User +</button>
+      <button id="edit-user-btn">User bearbeiten</button>
+    </div>
+  </div>
+  <div class="main-grid">
+    <div class="tiles">
+      <section id="item-section">
+        <div id="item-buttons" class="button-grid"></div>
+      </section>
+      <section id="user-section" style="display:none;">
+        <div id="user-buttons" class="button-grid"></div>
+      </section>
+    </div>
+    <div class="sidebar" id="sidebar">
+      <h2>Offene Beträge</h2>
+      <table>
+        <thead><tr><th>Name</th><th>Betrag</th></tr></thead>
+        <tbody id="users"></tbody>
+      </table>
+      <p id="total-balance"></p>
+      <h3>Letzte Vorgänge</h3>
+      <div id="log"></div>
+      <div class="sidebar-buttons">
+        <button id="stats-btn">Auswertung</button>
+        <button id="full-log-btn">Log herunterladen</button>
+      </div>
+    </div>
+  </div>
+  <div id="pay-dialog" class="dialog" style="display:none;">
+    <select id="pay-user"></select>
+    <input id="pay-amount" type="number" step="0.01">
+    <input id="pay-comment" placeholder="Kommentar" />
+    <button id="pay-ok">OK</button>
+    <button id="pay-cancel">Abbrechen</button>
+  </div>
+  <div id="stock-dialog" class="dialog" style="display:none;"></div>
+  <div id="add-item-dialog" class="dialog" style="display:none;">
+    <input id="item-name" placeholder="Name" />
+    <input id="item-price" type="number" step="0.01" placeholder="Preis" />
+    <select id="item-type">
+      <option value="normal">Normaler Artikel</option>
+      <option value="stock">Bestandartikel (Stk)</option>
+      <option value="fish">Fisch (kg)</option>
+    </select>
+    <div id="item-stock-wrap">
+      <input id="item-stock" type="number" placeholder="Bestand" />
+    </div>
+    <button id="item-add-ok">OK</button>
+    <button id="item-add-cancel">Abbrechen</button>
+  </div>
+  <div id="edit-item-dialog" class="dialog" style="display:none;">
+    <select id="edit-item-select"></select>
+    <input id="edit-name" placeholder="Name" />
+    <input id="edit-price" type="number" step="0.01" placeholder="Preis" />
+    <select id="edit-type">
+      <option value="normal">Normaler Artikel</option>
+      <option value="stock">Bestandartikel (Stk)</option>
+      <option value="fish">Fisch (kg)</option>
+    </select>
+    <div id="edit-stock-wrap">
+      <input id="edit-stock" type="number" placeholder="Bestand" />
+    </div>
+    <button id="edit-item-ok">Speichern</button>
+    <button id="edit-item-cancel">Abbrechen</button>
+  </div>
+  <div id="add-user-dialog" class="dialog" style="display:none;">
+    <input id="add-user-name" placeholder="Name" />
+    <label><input type="checkbox" id="add-user-nobalance"> Kein Saldo</label>
+    <button id="add-user-ok">OK</button>
+    <button id="add-user-cancel">Abbrechen</button>
+  </div>
+  <div id="edit-user-dialog" class="dialog" style="display:none;">
+    <select id="edit-user-select"></select>
+    <input id="edit-user-name" placeholder="Name" />
+    <label><input type="checkbox" id="edit-user-nobalance"> Kein Saldo</label>
+    <button id="edit-user-ok">Speichern</button>
+    <button id="edit-user-cancel">Abbrechen</button>
+  </div>
+  <div id="stats-dialog" class="dialog" style="display:none;"></div>
+  <footer class="footer">Version <span id="version"></span> |
+    <a href="http://www.hech.me" target="_blank">Copyright by HeCh</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
